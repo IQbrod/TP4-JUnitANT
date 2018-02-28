@@ -43,7 +43,9 @@ public class MyUnsortedList<E> implements UnsortedList<E> {
 		
 		E ret = this.first.getElement();
 		this.first = this.first.getNext();
-		this.first.setPrev(null);
+		if (this.first != null) {
+			this.first.setPrev(null);
+		}
 		this.taille --;
 		return ret;
 	}
@@ -55,6 +57,7 @@ public class MyUnsortedList<E> implements UnsortedList<E> {
 		}
 		if (pos == this.taille) {
 			this.append(elem);
+			return;
 		}
 		// GETTING PREVIOUS NODE
 		Maillon<E> init;
@@ -103,6 +106,7 @@ public class MyUnsortedList<E> implements UnsortedList<E> {
 			init.getNext().setPrev(init);
 		}
 		
+		this.taille --;
 		return ret;
 	}
 
